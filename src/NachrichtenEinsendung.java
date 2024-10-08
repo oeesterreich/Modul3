@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 
 /**
- * Diese Klasse speichert Informationen übber eine Einsendung innerhalb eines sozialen
- * Netzwerks. Der Hauptteil der Einsendung besteht aus einer (möglicherweise 
+ * Diese Klasse speichert Informationen ï¿½bber eine Einsendung innerhalb eines sozialen
+ * Netzwerks. Der Hauptteil der Einsendung besteht aus einer (mï¿½glicherweise 
  * mehrzeiligen) Textnachricht. Weitere Daten, wie Autor und Datum, werden ebenfalls 
  * gespeichert.
  */
-public class NachrichtenEinsendung 
+public class NachrichtenEinsendung extends Einsendung
 {
     private String benutzername;  // Benutzername des Senders
     private String nachricht;     // eine beliebig lange, mehrzeilige Nachricht
@@ -15,7 +15,7 @@ public class NachrichtenEinsendung
     private ArrayList<String> kommentare;
 
     /**
-     * Konstruktor für Objekte der Klasse NachrichtenEinsendung.
+     * Konstruktor fï¿½r Objekte der Klasse NachrichtenEinsendung.
      * 
      * @param autor    der Benutzername des Einsenders.
      * @param text      der Text dieser Einsendung.
@@ -30,33 +30,22 @@ public class NachrichtenEinsendung
     }
 
     /**
-     * Halte fest, dass die Nachricht von einem Benutzer mit 'gefällt' bewertet 
+     * Halte fest, dass die Nachricht von einem Benutzer mit 'gefï¿½llt' bewertet 
      * wurde.
      */
-    public void gefaellt()
-    {
-        gefielWieOft++;
-    }
+
 
     /**
-     * Halte fest, dass ein Benutzer seine 'gefällt'-Bewertung zurückgezogen hat.
+     * Halte fest, dass ein Benutzer seine 'gefï¿½llt'-Bewertung zurï¿½ckgezogen hat.
      */
-    public void gefaelltNicht()
-    {
-        if (gefielWieOft > 0) {
-            gefielWieOft--;
-        }
-    }
+
 
     /**
-     * Füge der Einsendung einen Kommentar hinzu.
+     * Fï¿½ge der Einsendung einen Kommentar hinzu.
      * 
-     * @param text  der neu hinzuzufügende Kommentar.
+     * @param text  der neu hinzuzufï¿½gende Kommentar.
      */
-    public void erfasseKommentar(String text)
-    {
-        kommentare.add(text);
-    }
+
 
     /**
      * Liefere den Text dieser Einsendung.
@@ -73,10 +62,7 @@ public class NachrichtenEinsendung
      * 
      * @return die Zeit, zu der die Einsendung erstellt wurde (als Systemzeit-Wert)..
      */
-    public long gibZeitstempel()
-    {
-        return zeitstempel;
-    }
+
 
     /**
      * Zeige die Details der Einsendung an.
@@ -113,7 +99,7 @@ public class NachrichtenEinsendung
      * verwendet.
      * 
      * @param zeit  der umzuwandelnde Zeitwert (in System-Millisekunden)
-     * @return      eine relative Zeitbeschreibung für den gegebenen Zeitwert
+     * @return      eine relative Zeitbeschreibung fï¿½r den gegebenen Zeitwert
      */
     private String zeitString(long zeit)
     {

@@ -6,21 +6,16 @@ import java.util.ArrayList;
  * Weitere Daten, wie Autor und Datum, werden ebenfalls gespeichert.
  * 
  */
-public class FotoEinsendung 
+public class FotoEinsendung extends Einsendung
 {
-    private String benutzername;  // Benutzername des Einsenders
-    private String dateiname;     // der Name der Bilddatei
-    private String ueberschrift;  // einzeilige Bild√ºberschrift
-    private long zeitstempel;
-    private int gefielWieOft;
-    private ArrayList<String> kommentare;
+
 
     /**
-     * Konstruktor f¸r Objekte der Klasse FotoEinsendung.
+     * Konstruktor fÔøΩr Objekte der Klasse FotoEinsendung.
      * 
      * @param autor          der Benutzername des Einsenders.
      * @param dateiname      der Dateiname des Bildes in dieser Einsendung.
-     * @param ueberschrift   eine ‹beschrift f¸r das Bild
+     * @param ueberschrift   eine ÔøΩbeschrift fÔøΩr das Bild
      */
     public FotoEinsendung(String autor, String dateiname, String ueberschrift)
     {
@@ -33,32 +28,21 @@ public class FotoEinsendung
     }
 
     /**
-     * Halte fest, dass das Bild von einem Benutzer mit 'gef‰llt' bewertet wurde.
+     * Halte fest, dass das Bild von einem Benutzer mit 'gefÔøΩllt' bewertet wurde.
      */
-    public void gefaellt()
-    {
-        gefielWieOft++;
-    }
+
 
     /**
-     * Halte fest, dass ein Benutzer seine 'gefˆllt'-Bewertung zur¸ckgezogen hat.
+     * Halte fest, dass ein Benutzer seine 'gefÔøΩllt'-Bewertung zurÔøΩckgezogen hat.
      */
-    public void gefaelltNicht()
-    {
-        if (gefielWieOft > 0) {
-            gefielWieOft--;
-        }
-    }
+
 
     /**
-     * F¸ge der Einsendung einen Kommentar hinzu.
+     * FÔøΩge der Einsendung einen Kommentar hinzu.
      * 
-     * @param text  der neu hinzuzuf¸gende Kommentar.
+     * @param text  der neu hinzuzufÔøΩgende Kommentar.
      */
-    public void erfasseKommentar(String text)
-    {
-        kommentare.add(text);
-    }
+
 
     /**
      * Liefere den Dateinamen des Bildes aus der Einsendung.
@@ -71,24 +55,18 @@ public class FotoEinsendung
     }
 
     /**
-     * Liefere die ‹berschrift des Bildes aus der Einsendung.
+     * Liefere die ÔøΩberschrift des Bildes aus der Einsendung.
      * 
-     * @return die ‹berschrift des Bildes.
+     * @return die ÔøΩberschrift des Bildes.
      */
-    public String gibUeberschrift()
-    {
-        return ueberschrift;
-    }
+
 
     /**
      * Liefere die Zeit, zu der die Einsendung erstellt wurde.
      * 
      * @return die Zeit, zu der die Einsendung erstellt wurde (als Systemzeit-Wert).
      */
-    public long gibZeitstempel()
-    {
-        return zeitstempel;
-    }
+
 
     /**
      * Zeige die Details der Einsendung an.
@@ -98,6 +76,7 @@ public class FotoEinsendung
      */
     public void anzeigen()
     {
+        super.anzeigen();
         System.out.println(benutzername);
         System.out.println("  [" + dateiname + "]");
         System.out.println("  " + ueberschrift);
@@ -122,24 +101,12 @@ public class FotoEinsendung
     /**
      * Erzeuge einen String, der einen in der Vergangenheit liegenden Zeitpunkt im 
      * Vergleich zur aktuellen Zeit beschreibt, also beispielsweise "vor 30 Sekunden"  
-     * oder "vor 7 Minuten". Derzeit werden nur Sekunden und Minuten f¸r den String 
+     * oder "vor 7 Minuten". Derzeit werden nur Sekunden und Minuten fÔøΩr den String 
      * verwendet.
      * 
      * @param zeit  der umzuwandelnde Zeitwert (in System-Millisekunden)
-     * @return      eine relative Zeitbeschreibung f¸r den gegebenen Zeitwert
+     * @return      eine relative Zeitbeschreibung fÔøΩr den gegebenen Zeitwert
      */
     
-    private String zeitString(long zeit)
-    {
-        long aktuell = System.currentTimeMillis();
-        long vergangeneMillis = aktuell - zeit;   // vergangene Zeit in Millisekunden
-        long sekunden = vergangeneMillis/1000;
-        long minuten = sekunden/60;
-        if(minuten > 0) {
-            return "vor " + minuten + " Minuten";
-        }
-        else {
-            return "vor " + sekunden + " Sekunden";
-        }
-    }
+
 }
