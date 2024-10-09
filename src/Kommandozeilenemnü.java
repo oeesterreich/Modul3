@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Kommandozeilenemnü {
@@ -8,8 +9,18 @@ public class Kommandozeilenemnü {
 		this.scan = new Scanner(System.in);
 	}
 	public static void main(String[] args) {
-		Einsendung e = new FotoEinsendung("Janosch Walter","Halihalo","Nevio Rheinstadler");
-		e.anzeigen();
+		Kommandozeilenemnü k = new Kommandozeilenemnü();
+		Einsendung e = new NachrichtenEinsendung("Nevio Rheinstadler",1L,"Ich liebe Java");
+		Einsendung e1 = new NachrichtenEinsendung("Fabian",2L,"Ich hasse Java");
+		System.out.println();
+		NewsFeed n = new NewsFeed(new ArrayList<>());
+		n.Nachrichtenaufnehmen(e);
+		n.Nachrichtenaufnehmen(e1);
+		n.zeigen();
+		n.Nachrichtendurchsuchen(e);
+
+
+
 	}
 	public void MenüAnzeigen() {
 		System.out.println("MEN�");
