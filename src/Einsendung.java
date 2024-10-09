@@ -3,13 +3,13 @@ import java.util.ArrayList;
 public class Einsendung {
 
     private String benutzername;  // Benutzername des Einsenders
-    private String ueberschrift;  // einzeilige Bildüberschrift
     private long zeitstempel;
     private int gefielWieOft;
-    private ArrayList<String> kommentare;
+    private ArrayList<String> kommentare = new ArrayList<>();
 
-    public void anzeigen(){
-
+    public Einsendung(String benutzername, long zeitstempel) {
+        this.benutzername = benutzername;
+        this.zeitstempel = zeitstempel;
     }
 
     public String gibBenutzername(){
@@ -33,10 +33,30 @@ public class Einsendung {
         kommentare.add(text);
     }
 
-    public String gibUeberschrift()
-    {
-        return ueberschrift;
+    public void anzeigen(){
+        System.out.println("Benutzername: " + benutzername);
+
+        System.out.print("Post gesendet: " + zeitString(zeitstempel));
+
+        if(gefielWieOft > 0) {
+            System.out.println("  -  " + gefielWieOft + " Person(en) gefaellt dies.");
+        }
+        else {
+            System.out.println();
+        }
+
+        if(kommentare.isEmpty()) {
+            System.out.println("   Keine Kommentare.");
+        }
+        else {
+            System.out.println("   " + kommentare.size() +
+                    " Kommentar(e). Zum Einsehen hier klicken.");
+        }
     }
+
+
+
+
 
     public long gibZeitstempel()
     {
