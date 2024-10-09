@@ -9,22 +9,13 @@ import java.util.ArrayList;
 public class FotoEinsendung extends Einsendung
 {
 
+    private String dateiname;
+    private String ueberschrift;
 
-    /**
-     * Konstruktor f�r Objekte der Klasse FotoEinsendung.
-     * 
-     * @param autor          der Benutzername des Einsenders.
-     * @param dateiname      der Dateiname des Bildes in dieser Einsendung.
-     * @param ueberschrift   eine �beschrift f�r das Bild
-     */
-    public FotoEinsendung(String autor, String dateiname, String ueberschrift)
-    {
-        benutzername = autor;
+    public FotoEinsendung(String benutzername, long zeitstempel, String dateiname, String ueberschrift) {
+        super(benutzername, zeitstempel);
         this.dateiname = dateiname;
         this.ueberschrift = ueberschrift;
-        zeitstempel = System.currentTimeMillis();
-        gefielWieOft = 0;
-        kommentare = new ArrayList<String>();
     }
 
     /**
@@ -54,6 +45,10 @@ public class FotoEinsendung extends Einsendung
         return dateiname;
     }
 
+    public String gibUeberschrift()
+    {
+        return ueberschrift;
+    }
     /**
      * Liefere die �berschrift des Bildes aus der Einsendung.
      * 
@@ -76,26 +71,9 @@ public class FotoEinsendung extends Einsendung
      */
     public void anzeigen()
     {
-        super.anzeigen();
-        System.out.println(benutzername);
-        System.out.println("  [" + dateiname + "]");
-        System.out.println("  " + ueberschrift);
-        System.out.print(zeitString(zeitstempel));
-        
-        if(gefielWieOft > 0) {
-            System.out.println("  -  " + gefielWieOft + " Person(en) gefaellt dies.");
-        }
-        else {
-            System.out.println();
-        }
-        
-        if(kommentare.isEmpty()) {
-            System.out.println("   Keine Kommentare.");
-        }
-        else {
-            System.out.println("   " + kommentare.size() + 
-                               " Kommentar(e). Zum Einsehen hier klicken.");
-        }
+        System.out.println("Dateiname: " + "[" + dateiname + "]");
+        System.out.println("Überschrift: " + ueberschrift);
+       super.anzeigen();
     }
     
     /**
