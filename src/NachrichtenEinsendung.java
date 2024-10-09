@@ -8,27 +8,14 @@ import java.util.ArrayList;
  */
 public class NachrichtenEinsendung extends Einsendung
 {
-    private String benutzername;  // Benutzername des Senders
-    private String nachricht;     // eine beliebig lange, mehrzeilige Nachricht
-    private long zeitstempel;
-    private int gefielWieOft;
-    private ArrayList<String> kommentare;
 
-    /**
-     * Konstruktor f�r Objekte der Klasse NachrichtenEinsendung.
-     * 
-     * @param autor    der Benutzername des Einsenders.
-     * @param text      der Text dieser Einsendung.
-     */
-    public NachrichtenEinsendung(String autor, String text)
-    {
-        benutzername = autor;
-        nachricht = text;
-        zeitstempel = System.currentTimeMillis();
-        gefielWieOft = 0;
-        kommentare = new ArrayList<String>();
+    private String nachrichtentext;
+
+
+    public NachrichtenEinsendung(String benutzername, long zeitstempel, String nachrichtentext) {
+        super(benutzername, zeitstempel);
+        this.nachrichtentext = nachrichtentext;
     }
-
     /**
      * Halte fest, dass die Nachricht von einem Benutzer mit 'gef�llt' bewertet 
      * wurde.
@@ -52,9 +39,9 @@ public class NachrichtenEinsendung extends Einsendung
      * 
      * @return den Text der Einsendung.
      */
-    public String gibText()
+    public String gibNachrichtentext()
     {
-        return nachricht;
+        return this.nachrichtentext;
     }
 
     /**
@@ -72,24 +59,8 @@ public class NachrichtenEinsendung extends Einsendung
      */
     public void anzeigen()
     {
-        System.out.println(benutzername);
-        System.out.println(nachricht);
-        System.out.print(zeitString(zeitstempel));
-        
-        if(gefielWieOft > 0) {
-            System.out.println("  -  " + gefielWieOft + " Person(en) gefaellt dies.");
-        }
-        else {
-            System.out.println();
-        }
-        
-        if(kommentare.isEmpty()) {
-            System.out.println("   Keine Kommentare.");
-        }
-        else {
-            System.out.println("   " + kommentare.size() + 
-                               " Kommentar(e). Zum Einsehen hier klicken.");
-        }
+        System.out.println(nachrichtentext);
+        super.anzeigen();
     }
     
     /**
