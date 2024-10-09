@@ -1,48 +1,62 @@
 import java.util.ArrayList;
 
 /**
- * Die Klasse NewsFeed speichert neue Einsendungen für den Newsfeed einer 
+ * Die Klasse NewsFeed speichert neue Einsendungen fï¿½r den Newsfeed einer 
  * Sozialen-Netzwerk-Anwendung (wie Facebook oder Google+).
  * 
  * Derzeit wird das Anzeigen der Einsendungen durch die Ausgabe auf die Konsole simuliert.
- * (Später soll die Anzeige in einem Webbrowser erfolgen.)
+ * (Spï¿½ter soll die Anzeige in einem Webbrowser erfolgen.)
  * 
- * Diese Version speichert keine Daten auf Festplatte. Auch gibt es keine Unterstützung für
+ * Diese Version speichert keine Daten auf Festplatte. Auch gibt es keine Unterstï¿½tzung fï¿½r
  * das Durchsuchen oder Anordnen der Einsendungen.
  */
 public class NewsFeed
 {
-    private ArrayList<NachrichtenEinsendung> nachrichten;
-    private ArrayList<FotoEinsendung> fotos;
+    private ArrayList<Einsendung> einsendungen;
+
+    public NewsFeed(ArrayList<Einsendung> einsendungen) {
+
+        this.einsendungen = einsendungen;
+    }
 
     /**
      * Erzeuge einen leeren Newsfeed.
      */
-    public NewsFeed()
+
+
+
+    public void Nachrichtenaufnehmen(Einsendung einsendung)
     {
-        nachrichten = new ArrayList<NachrichtenEinsendung>();
-        fotos = new ArrayList<FotoEinsendung>();
+        einsendungen.add(einsendung);
+    }
+
+    public void NachrichtenlÃ¶schen(Einsendung einsendung)
+    {
+        einsendungen.remove(einsendung);
+    }
+
+
+
+    public void Nachrichtendurchsuchen(Einsendung e)
+    {
+        if (einsendungen.contains(e))
+        {
+            System.out.println("Nachrichten vorhanden.");
+        } else {
+        System.out.println("Nachricht nicht vorhanden.");
+    }
+
+    }
+
+    public void Nachrichtenausgeben(int benutzer){
+        einsendungen.get(benutzer).anzeigen();
     }
 
     /**
-     * Füge dem Newsfeed eine eingesendete Nachricht hinzu.
+     * Fï¿½ge dem Newsfeed ein eingesendetes Foto hinzu.
      * 
-     * @param text  der eingesendete Text, der hinzugefügt werden soll.
+     * @param foto  das eingesendete Foto, das hinzugefï¿½gt werden soll.
      */
-    public void erfasseNachricht(NachrichtenEinsendung nachricht)
-    {
-        nachrichten.add(nachricht);
-    }
-
-    /**
-     * Füge dem Newsfeed ein eingesendetes Foto hinzu.
-     * 
-     * @param foto  das eingesendete Foto, das hinzugefügt werden soll.
-     */
-    public void erfasseFoto(FotoEinsendung foto)
-    {
-        fotos.add(foto);
-    }
 
     /**
      * Gib den Newsfeed aus auf die Kommandozeile. Derzeit werden die Details des Newsfeed auf die
@@ -51,16 +65,17 @@ public class NewsFeed
      */
     public void zeigen()
     {
-        // alle Text-Einsendungen anzeigen
-        for(NachrichtenEinsendung nachricht : nachrichten) {
-            nachricht.anzeigen();
+        // alle Einsendungen anzeigen
+        for(Einsendung einsendung : einsendungen) {
+            einsendung.anzeigen();
             System.out.println();   // leere Zeile zwischen den Einsendungen
         }
+    }
 
-        // alle Fotos anzeigen
-        for(FotoEinsendung foto : fotos) {
-            foto.anzeigen();
-            System.out.println();   // leere Zeile zwischen den Einsendungen
-        }
+    @Override
+    public String toString() {
+        return "NewsFeed{" +
+                "einsendungen=" + einsendungen +
+                '}';
     }
 }
