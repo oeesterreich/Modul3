@@ -10,14 +10,11 @@ public class Kommandozeilenemnü {
 	}
 	public static void main(String[] args) {
 		Kommandozeilenemnü k = new Kommandozeilenemnü();
-		Einsendung e = new NachrichtenEinsendung("Nevio Rheinstadler",1L,"Ich liebe Java");
+		Einsendung e = new NachrichtenEinsendung("Nevio Rheinstadler",1L,"Ich liebe Phyton");
 		Einsendung e1 = new NachrichtenEinsendung("Fabian",2L,"Ich hasse Java");
 		System.out.println();
 		NewsFeed n = new NewsFeed(new ArrayList<>());
-		n.Nachrichtenaufnehmen(e);
-		n.Nachrichtenaufnehmen(e1);
-		n.zeigen();
-		n.Nachrichtendurchsuchen(e);
+
 
 
 
